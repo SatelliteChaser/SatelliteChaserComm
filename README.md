@@ -1,6 +1,6 @@
 # SatelliteChaserComm
 
-These are the communication functions as used by Satellite Chaser.
+These are the communication functions as used by [Satellite Chaser](https://sites.google.com/view/satellitechaser/home).
 Currently there’s a working ASCOM implementation and an untested Paramount implementation.
 If you want to add support for a different communication protocol, you should
 
