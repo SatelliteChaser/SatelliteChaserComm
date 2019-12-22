@@ -84,6 +84,10 @@ Module Module1
     End Sub
 
     Private Sub SetMoveAxis(Axis As Integer, Amount As Double) 'input in deg
+        
+        'for AltAz mounts:
+        'Axis = 0: Azimuth
+        'Axis = 1: Altitude
 
         Select Case CommType
             Case 0 'ASCOM
@@ -179,7 +183,8 @@ Module Module1
     End Sub
 
     Private Sub SetSlewToCoordinatesAsync(RA As Double, DEC As Double) 'both inputs in deg
-
+    'This function is never called when using AltAz mounts
+        
         Select Case CommType
             Case 0 'ASCOM
                 objtelescope.SlewToCoordinatesAsync(RA, DEC)
@@ -188,6 +193,17 @@ Module Module1
             Case Else
         End Select
 
+    End Sub
+    
+    Private Sub SetSlewToAltAzAsync(AZ As Double, ALT As Double) 'assuming deg input for both axes
+        'only needs to be implemented for AltAz mounts
+        'This function is never called when using Equatorial mounts
+
+        Select Case CommType
+            Case 0 'ASCOM
+                objtelescope.SlewToAltAzAsync(AZ, ALT)
+                'no AltAz Paramounts, therefore no Case 1
+        End Select
     End Sub
 
 
